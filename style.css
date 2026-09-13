@@ -218,3 +218,93 @@ body{
   z-index:2;
   box-shadow:0 4px 14px rgba(0,0,0,.25);
 }
+
+/* V10 — LOCAL BIG BOWL PRODUCT IMAGE */
+.product .visual img{background:#f7f4ee}
+
+/* =========================================================
+   V11 — MOY MARKET CHAMELEON PREMIUM
+   Lightweight animated color ambience — CSS only.
+   ========================================================= */
+:root{
+  --ch-a:#ff7418;
+  --ch-b:#ffb13b;
+  --ch-c:#120b05;
+  --ch-speed:10s;
+}
+html,body{min-height:100%}
+body{
+  position:relative;
+  isolation:isolate;
+  background:#030609;
+}
+body::before{
+  content:"";
+  position:fixed;
+  inset:-18%;
+  z-index:-2;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 16% 18%,rgba(255,116,24,.24),transparent 25%),
+    radial-gradient(circle at 84% 24%,rgba(255,177,59,.18),transparent 26%),
+    radial-gradient(circle at 50% 86%,rgba(255,75,28,.14),transparent 30%),
+    linear-gradient(120deg,#05080c,#160b05,#06120f,#090615,#07111a,#120a04);
+  background-size:140% 140%;
+  animation:mmChameleon var(--ch-speed) ease-in-out infinite alternate;
+  filter:saturate(1.12);
+}
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 50% 25%,rgba(255,255,255,.045),transparent 38%),
+    linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.35));
+}
+@keyframes mmChameleon{
+  0%{
+    transform:scale(1);
+    filter:hue-rotate(0deg) saturate(1.08);
+    opacity:.86;
+  }
+  25%{
+    filter:hue-rotate(18deg) saturate(1.12);
+  }
+  50%{
+    transform:scale(1.055);
+    filter:hue-rotate(48deg) saturate(1.16);
+    opacity:1;
+  }
+  75%{
+    filter:hue-rotate(82deg) saturate(1.1);
+  }
+  100%{
+    transform:scale(1.02);
+    filter:hue-rotate(112deg) saturate(1.08);
+    opacity:.9;
+  }
+}
+.nav,.card,.info-card,.contact,.branches>div{
+  transition:border-color .8s ease,box-shadow .8s ease,background-color .8s ease;
+}
+.nav{
+  background:linear-gradient(180deg,rgba(3,7,11,.92),rgba(3,7,11,.70));
+}
+.section-title,.eyebrow{color:#ffad45!important}
+.price,.product>b{color:#ffb347!important}
+.primary{
+  background:linear-gradient(135deg,#ff7418,#ffad35);
+}
+@media(prefers-reduced-motion:reduce){
+  body::before{animation:none}
+  *{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
+@media(max-width:700px){
+  body::before{
+    inset:-30%;
+    background-size:170% 170%;
+    animation-duration:12s;
+  }
+}

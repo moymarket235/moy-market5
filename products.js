@@ -11,11 +11,11 @@ const C=[
 ];
 
 const P=[
-{id:1,ky:"Кесе",ru:"Кружка",price:230,
- img:"https://download.pakutaso.com/shared/img/thumb/PAK85_kiirioicup20140329.jpg",
+{id:1,ky:"Чоң пиала",ru:"Большая пиала",price:230,
+ img:"chon-piala.webp",
  c:"dishes",s:"single",e:"☕",tag:"Хит",
- descKy:"Күнүмдүк чай жана кофе үчүн жарашыктуу кесе.",
- descRu:"Элегантная кружка для ежедневного чая и кофе."},
+ descKy:"Туткасы жок чоң пиала — күнүмдүк дасторкон жана чай үчүн жарашыктуу идиш.",
+ descRu:"Большая пиала без ручки для красивой сервировки и ежедневного использования."},
 
 {id:2,ky:"Пиала",ru:"Пиала",price:170,
  img:"https://www.togas.com/media/catalog/product/cache/e15cec91152beb1e9b3a9ceaa9f61b3c/N/E/NEA_PLATES_LS_01_64ac.jpg",

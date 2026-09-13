@@ -7,8 +7,30 @@
 <link rel="preload" as="image" href="cinematic-hero.webp">
 <link rel="preload" as="image" href="logo.webp">
 <link rel="stylesheet" href="style.css">
-</head>
+<style>
+.chameleon-badge{
+  position:fixed;right:14px;bottom:14px;z-index:20;
+  display:flex;align-items:center;gap:7px;
+  padding:7px 11px;border:1px solid rgba(255,171,67,.25);
+  border-radius:999px;background:rgba(3,7,11,.58);
+  color:rgba(255,219,176,.72);font-size:9px;letter-spacing:1.2px;
+  backdrop-filter:blur(10px);pointer-events:none;
+}
+.chameleon-badge span{
+  width:7px;height:7px;border-radius:50%;
+  background:#ff7b1a;box-shadow:0 0 12px #ff7b1a;
+  animation:mmDot 3s ease-in-out infinite alternate;
+}
+@keyframes mmDot{
+  0%{background:#ff7b1a;box-shadow:0 0 8px #ff7b1a}
+  50%{background:#29d68b;box-shadow:0 0 12px #29d68b}
+  100%{background:#8c6cff;box-shadow:0 0 12px #8c6cff}
+}
+@media(max-width:700px){.chameleon-badge{bottom:8px;right:8px;font-size:8px;padding:6px 9px}}
+</style></head>
 <body>
+<div class="chameleon-badge" aria-hidden="true"><span></span> PREMIUM • CHAMELEON</div>
+
 <div id="welcome" class="welcome" aria-label="Мой Маркетке кош келиңиз">
   <div class="welcome-bg"></div><img src="logo.webp" alt="Мой Маркет" class="welcome-logo">
   <div class="welcome-copy"><span>МОЙ МАРКЕТ</span><h2>Мой Маркетке<br><em>кош келиңиз!</em></h2><small>Үйүңүзгө керектүүнүн баары — бир жерде.</small></div>
