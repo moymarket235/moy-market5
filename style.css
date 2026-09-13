@@ -7,3 +7,65 @@
 
 .hero-art{display:none!important}
 @media(max-width:850px){.hero-cinema{height:300px;border-radius:22px}.cinema-caption{left:6%;bottom:8%}.cinema-caption h2{font-size:29px}}
+
+
+/* V5 PREMIUM CINEMATIC BACKGROUND + WHATSAPP */
+:root{--mm-orange:#ff7418;--mm-gold:#ffb13b;--mm-dark:#05080c;--mm-panel:rgba(7,12,18,.78)}
+body{
+  background:
+    radial-gradient(circle at 78% 10%, rgba(255,145,35,.12), transparent 28%),
+    radial-gradient(circle at 18% 30%, rgba(255,111,0,.08), transparent 25%),
+    linear-gradient(180deg,#03070b 0%,#071019 45%,#030609 100%);
+}
+.nav{
+  background:linear-gradient(180deg,rgba(2,6,10,.94),rgba(2,6,10,.76));
+  border-bottom:1px solid rgba(255,153,45,.18);
+  backdrop-filter:blur(14px);
+}
+.hero{position:relative;overflow:hidden}
+.hero:before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(circle at 70% 42%,rgba(255,160,50,.16),transparent 30%),
+    linear-gradient(90deg,rgba(2,5,8,.84),rgba(2,5,8,.25) 52%,rgba(2,5,8,.72));
+  z-index:1;
+}
+.hero-text,.hero-cinema{position:relative;z-index:2}
+.hero-cinema img{filter:saturate(1.06) contrast(1.04) brightness(.82)}
+.hero-wa{
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  background:#16b957;
+  color:#fff!important;
+  border:1px solid rgba(255,255,255,.18);
+  box-shadow:0 10px 35px rgba(22,185,87,.22);
+}
+.hero-wa:hover{transform:translateY(-2px);box-shadow:0 14px 40px rgba(22,185,87,.3)}
+.info-card strong,.contact strong{color:#fff}
+.contact{
+  display:flex;align-items:center;justify-content:space-between;gap:18px;
+}
+.contact-brand{display:flex;align-items:center;gap:14px}
+.wa-logo{
+  width:54px;height:54px;border-radius:50%;display:grid;place-items:center;
+  background:#19bd59;color:#fff;font-size:30px;font-weight:800;
+  box-shadow:0 0 28px rgba(25,189,89,.25);
+}
+.branches>div{
+  position:relative;
+  display:flex;align-items:center;gap:9px;flex-wrap:wrap;
+}
+.branches>div>span{
+  width:28px;height:28px;border-radius:50%;display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--mm-orange),var(--mm-gold));
+  color:#111;font-weight:900;font-size:12px;
+}
+.branches small{width:100%;padding-left:38px;color:#aab3bf}
+@media(max-width:700px){
+  .contact{align-items:flex-start;flex-direction:column}
+  .contact .whatsapp{width:100%;text-align:center}
+  .hero-wa{width:100%}
+}
