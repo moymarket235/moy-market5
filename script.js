@@ -3,12 +3,51 @@ const $=s=>document.querySelector(s), $$=s=>document.querySelectorAll(s), name=p
 const welcome=()=>{const w=$("#welcome");if(!w)return;const seen=sessionStorage.getItem("mmWelcome");if(seen)w.classList.add("hide");$("#enterSite")?.addEventListener("click",()=>{w.classList.add("hide");sessionStorage.setItem("mmWelcome","1")})};welcome();
 function cats(){ $("#cats").innerHTML=C.map(x=>`<button class="cat ${x[0]===cat?"active":""}" data-c="${x[0]}"><i>${x[3]}</i><b>${lang==="ru"?x[2]:x[1]}</b>${x[4].length?`<small>${x[4].length} ${tr("бөлүм","разделов")}</small>`:""}</button>`).join("");$$(".cat").forEach(b=>b.onclick=()=>{cat=b.dataset.c;sub="";cats();subs();products()})}
 function subs(){let x=C.find(a=>a[0]===cat),el=$("#subs");el.innerHTML=x&&x[4].length?x[4].map(a=>`<button class="${a[0]===sub?"on":""}" data-s="${a[0]}">${lang==="ru"?a[2]:a[1]}</button>`).join(""):"";$$(".subs button").forEach(b=>b.onclick=()=>{sub=b.dataset.s;subs();products()})}
-function products(){let q=$("#search").value.toLowerCase(),list=P.filter(p=>(cat==="all"||p.c===cat)&&(!sub||p.s===sub)&&name(p).toLowerCase().includes(q));$("#products").innerHTML=list.length?list.map(p=>`<article class="product"><div class="visual"><span>${p.tag}</span>${p.e}</div><h3>${name(p)}</h3><p>${tr("Толук описание сүрөттөрү менен эртең кошулат.","Подробное описание и фотографии добавим завтра.")}</p><b>${p.price?`${p.price} сом`:"Баасы кийин"}</b><button class="add" data-id="${p.id}">+</button></article>`).join(""):`<div class="empty">${tr("Бул бөлүмгө товарлар эртең кошулат.","Товары в этот раздел будут добавлены завтра.")}</div>`;$$(".add").forEach(b=>b.onclick=()=>add(+b.dataset.id,b))}
+function productImage(p){
+  return p.img
+    ? `<img src="${p.img}" alt="${name(p)}" loading="lazy" decoding="async">`
+    : `<span class="emoji-product" aria-hidden="true">${p.e}</span>`;
+}
+function products(){
+  let q=$("#search").value.toLowerCase(),list=P.filter(p=>(cat==="all"||p.c===cat)&&(!sub||p.s===sub)&&name(p).toLowerCase().includes(q));
+  $("#products").innerHTML=list.length?list.map(p=>`<article class="product" data-product-id="${p.id}">
+    <div class="visual"><span>${p.tag}</span>${productImage(p)}</div>
+    <h3>${name(p)}</h3>
+    <p>${lang==="ru"?(p.descRu||"Профессиональная фотография товара."): (p.descKy||"Профессионалдуу товар сүрөтү.")}</p>
+    <b>${p.price?`${p.price} сом`:"Баасы кийин"}</b>
+    <button class="add" data-id="${p.id}">+</button>
+  </article>`).join(""):`<div class="empty">${tr("Бул бөлүмгө товарлар эртең кошулат.","Товары в этот раздел будут добавлены завтра.")}`;
+  $$(".add").forEach(b=>b.onclick=()=>add(+b.dataset.id,b))
+}
 function add(id,el){let p=P.find(x=>x.id===id);if(!p.price)return toast(tr("Баасы эртең кошулат.","Цена будет добавлена завтра."));cart.push(p);qty[id]=(qty[id]||0)+1;$("#count").textContent=cart.length;calc();burst(el);toast("✨ "+name(p)+" "+tr("кошулду!","добавлен!"))}
 function calc(){let ids=Object.keys(qty);$("#calcRows").innerHTML=ids.length?ids.map(id=>{let p=P.find(x=>x.id==id);return `<div class="row"><span>${name(p)}<small>${p.price} ×</small></span><input min="0" type="number" value="${qty[id]}" data-id="${id}"><strong>${p.price*qty[id]} сом</strong></div>`}).join(""):`<div class="empty">${tr("Товар тандалган эмес.","Товары не выбраны.")}</div>`;$$(".row input").forEach(i=>i.oninput=()=>{qty[i.dataset.id]=+i.value||0;if(!qty[i.dataset.id])delete qty[i.dataset.id];calc()});$("#total").textContent=ids.reduce((s,id)=>s+P.find(p=>p.id==id).price*qty[id],0)+" сом"}
 function wa(text){return CFG.phone?`https://wa.me/${CFG.phone}?text=${encodeURIComponent(text)}`:`https://wa.me/?text=${encodeURIComponent(text)}`}
-$("#order").onclick=()=>location.href=wa("Салам! Мой Маркеттен заказ: "+Object.keys(qty).map(id=>name(P.find(p=>p.id==id))+" × "+qty[id]).join(", ")+" | Жалпы: "+$("#total").textContent+" | Жеткирип берүү — төлөмдүү.");
-$("#cart").onclick=()=>{let list=cart.map(p=>"• "+name(p)+" — "+p.price+" сом").join("<br>");$("#modal").classList.add("show");$("#modalBody").innerHTML=cart.length?`<h2>🛒 ${tr("Себет","Корзина")}</h2><p>${list}</p><h3>${$("#total").textContent}</h3>`:`<h2>🛒 ${tr("Себет бош","Корзина пуста")}</h2>`};
+function orderText(){
+  const ids=Object.keys(qty);
+  let lines=ids.map((id,i)=>{
+    const p=P.find(x=>x.id==id), sum=p.price*qty[id];
+    const image=p.img ? `\n🖼️ Товардын сүрөтү: ${new URL(p.img, location.href).href}` : "";
+    return `${i+1}. ${name(p)}\n   Саны: ${qty[id]} даана\n   Баасы: ${p.price} сом\n   Суммасы: ${sum} сом${image}`;
+  });
+  return `Салам! Мой Маркеттен заказ берейин. 🛒\n\n${lines.join("\n\n")}\n\n💰 ЖАЛПЫ: ${$("#total").textContent}\n🚚 Жеткирип берүү: төлөмдүү\n📱 WhatsApp: +996 507 66 88 66`;
+}
+$("#order").onclick=()=>{
+  if(!Object.keys(qty).length){toast(tr("Алгач товар тандаңыз.","Сначала выберите товар."));return}
+  location.href=wa(orderText());
+};
+$("#cart").onclick=()=>{
+  const ids=Object.keys(qty);
+  $("#modal").classList.add("show");
+  if(!ids.length){$("#modalBody").innerHTML=`<h2>🛒 ${tr("Себет бош","Корзина пуста")}</h2>`;return}
+  const list=ids.map(id=>{
+    const p=P.find(x=>x.id==id);
+    return `<div class="cart-item">
+      <div class="cart-thumb">${productImage(p)}</div>
+      <div><b>${name(p)}</b><small>${qty[id]} × ${p.price} сом</small><strong>${p.price*qty[id]} сом</strong></div>
+    </div>`;
+  }).join("");
+  $("#modalBody").innerHTML=`<h2>🛒 ${tr("Себет","Корзина")}</h2><div class="cart-list">${list}</div><h3 class="cart-total">${$("#total").textContent}</h3><button class="primary cart-order" onclick="document.querySelector('#order').click()">🟢 WhatsApp · Заказ берүү</button>`;
+};
 $("#close").onclick=()=>$("#modal").classList.remove("show");$("#modal").onclick=e=>{if(e.target.id==="modal")$("#modal").classList.remove("show")};
 $("#search").oninput=products;
 $$(".langs button").forEach(b=>b.onclick=()=>{lang=b.dataset.lang;localStorage.setItem("mmLang",lang);$$(".langs button").forEach(x=>x.classList.toggle("active",x===b));$$("[data-ky]").forEach(e=>e.textContent=lang==="ru"?e.dataset.ru:e.dataset.ky);cats();subs();products();calc()});
