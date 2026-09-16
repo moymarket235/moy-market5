@@ -11,39 +11,25 @@ const C=[
 ];
 
 const P=[
-{id:1,ky:"Чоң пиала",ru:"Большая пиала",price:230,
- img:"chon-piala.webp",
- c:"dishes",s:"single",e:"☕",tag:"Хит",
- descKy:"Туткасы жок чоң пиала — күнүмдүк дасторкон жана чай үчүн жарашыктуу идиш.",
- descRu:"Большая пиала без ручки для красивой сервировки и ежедневного использования."},
+{id:1,ky:"Чоң пиала",ru:"Большая пиала",price:230,img:"chon-piala.webp",c:"dishes",s:"single",e:"☕",tag:"Хит",descKy:"Туткасы жок чоң пиала — күнүмдүк дасторкон жана чай үчүн жарашыктуу идиш.",descRu:"Большая пиала без ручки для красивой сервировки и ежедневного использования."},
 
-{id:2,ky:"Пиала",ru:"Пиала",price:170,
- img:"https://www.togas.com/media/catalog/product/cache/e15cec91152beb1e9b3a9ceaa9f61b3c/N/E/NEA_PLATES_LS_01_64ac.jpg",
- c:"dishes",s:"models",e:"🥣",tag:"Популярдуу",
- descKy:"Ак түстөгү минималисттик идиш стилиндеги профессионалдуу сүрөт.",
- descRu:"Минималистичная белая пиала в профессиональной предметной подаче."},
+{id:2,ky:"Original DUBAY — Пиала",ru:"Original DUBAY — Пиала",price:170,img:"original-dubay-piala.jpg",c:"dishes",s:"models",e:"🥣",tag:"Original DUBAY",descKy:"Original DUBAY пиала. 1 даана — 170 сом.",descRu:"Пиала Original DUBAY. 1 штука — 170 сом."},
 
-{id:3,ky:"Салатница 7-размер",ru:"Салатница 7-размер",price:380,
- img:"https://www.togas.com/media/catalog/product/cache/e15cec91152beb1e9b3a9ceaa9f61b3c/N/E/NEA_PLATES_LS_01_64ac.jpg",
- c:"dishes",s:"models",e:"🥗",tag:"Жаңы",
- descKy:"Салат жана дасторкон үчүн кооз идиш.",
- descRu:"Элегантная салатница для сервировки стола."},
+{id:3,ky:"Original DUBAY — Кесе",ru:"Original DUBAY — Кесе",price:230,img:"original-dubay-kese.jpg",c:"dishes",s:"models",e:"🥣",tag:"Original DUBAY",descKy:"Original DUBAY кесе. 1 даана — 230 сом.",descRu:"Кесе Original DUBAY. 1 штука — 230 сом."},
 
-{id:4,ky:"Набор кашыктар",ru:"Набор ложек",price:360,
- img:"https://images.unsplash.com/photo-1612325306686-d9b1e2e73e23?auto=format&fit=crop&fm=jpg&q=80&w=1200",
- c:"dishes",s:"spoons",e:"🥄",tag:"Сунуш",
- descKy:"Жылтырак металл кашык-бышак комплектине ылайык профессионалдуу сүрөт.",
- descRu:"Профессиональная подача набора столовых приборов."},
+{id:4,ky:"Original DUBAY — Тарелка 8-размер",ru:"Original DUBAY — Тарелка 8-размер",price:330,img:"original-dubay-tarelka-8.jpg",c:"dishes",s:"models",e:"🍽️",tag:"Original DUBAY",descKy:"Original DUBAY тарелка, 8-размер. 1 даана — 330 сом.",descRu:"Тарелка Original DUBAY, 8-размер. 1 штука — 330 сом."},
 
-{id:5,ky:"Казан-кастрюля",ru:"Казан-кастрюля",price:500,
- img:"https://images.unsplash.com/photo-1604414499020-f9ac575bc5ec?auto=format&fit=crop&fm=jpg&q=80&w=1200",
- c:"pots",s:"other",e:"🍲",tag:"Арзан",
- descKy:"Казан жана кастрюля категориясына ылайык тандалган профессионалдуу сүрөт.",
- descRu:"Профессиональная фотография для категории казанов и кастрюль."},
+{id:5,ky:"Original DUBAY — Тарелка 9-размер",ru:"Original DUBAY — Тарелка 9-размер",price:380,img:"original-dubay-tarelka-9.jpg",c:"dishes",s:"models",e:"🍽️",tag:"Original DUBAY",descKy:"Original DUBAY тарелка, 9-размер. 1 даана — 380 сом.",descRu:"Тарелка Original DUBAY, 9-размер. 1 штука — 380 сом."},
 
-{id:6,ky:"Сушилка для посуды",ru:"Сушилка для посуды",price:0,
- img:"https://images.unsplash.com/photo-1737681863576-c44b0acb56b8?auto=format&fit=crop&fm=jpg&q=80&w=1200",
- c:"dishes",s:"dry-dish",e:"🍽️",tag:"Жаңы",
- descKy:"Идиш кургаткыч үчүн заманбап ашканадагы профессионалдуу сүрөт.",
- descRu:"Современная профессиональная фотография сушилки для посуды."}
-];
+{id:6,ky:"Original DUBAY — Тарелка 10-размер",ru:"Original DUBAY — Тарелка 10-размер",price:480,img:"original-dubay-tarelka-10.jpg",c:"dishes",s:"models",e:"🍽️",tag:"Original DUBAY",descKy:"Original DUBAY тарелка, 10-размер. 1 даана — 480 сом.",descRu:"Тарелка Original DUBAY, 10-размер. 1 штука — 480 сом."},
+
+{id:7,ky:"Original DUBAY — Салатница 7-размер",ru:"Original DUBAY — Салатница 7-размер",price:380,img:"original-dubay-salatnica-7.jpg",c:"dishes",s:"models",e:"🥗",tag:"Original DUBAY",descKy:"Original DUBAY салатница, 7-размер. 1 даана — 380 сом.",descRu:"Салатница Original DUBAY, 7-размер. 1 штука — 380 сом."},
+ 
+
+{id:8,ky:"Original DUBAY — Салатница 8-размер",ru:"Original DUBAY — Салатница 8-размер",price:480,img:"original-dubay-salatnica-8.jpg",c:"dishes",s:"models",e:"🥗",tag:"Original DUBAY",descKy:"Original DUBAY салатница, 8-размер. 1 даана — 480 сом.",descRu:"Салатница Original DUBAY, 8-размер. 1 штука — 480 сом."},
+
+{id:9,ky:"Набор кашыктар",ru:"Набор ложек",price:360,img:"https://images.unsplash.com/photo-1612325306686-d9b1e2e73e23?auto=format&fit=crop&fm=jpg&q=80&w=1200",c:"dishes",s:"spoons",e:"🥄",tag:"Сунуш",descKy:"Жылтырак металл кашык-бышак комплектине ылайык профессионалдуу сүрөт.",descRu:"Профессиональная подача набора столовых приборов."},
+
+{id:10,ky:"Казан-кастрюля",ru:"Казан-кастрюля",price:500,img:"https://images.unsplash.com/photo-1604414499020-f9ac575bc5ec?auto=format&fit=crop&fm=jpg&q=80&w=1200",c:"pots",s:"other",e:"🍲",tag:"Арзан",descKy:"Казан жана кастрюля категориясына ылайык тандалган профессионалдуу сүрөт.",descRu:"Профессиональная фотография для категории казанов и кастрюль."},
+
+{id:11,ky:"Сушилка для посуды",ru:"Сушилка для посуды",price:0,img:"https://images.unsplash.com/photo-1737681863576-c44b0acb56b8?auto=format&fit=crop&fm=jpg&q=80&w=1200",c:"dishes",s:"dry-dish",e:"🍽️",tag:"Жаңы",descKy:"Идиш кургаткыч үчүн заманбап ашканадагы профессионалдуу сүрөт.",descRu:"Современная профессиональная фотография сушилки для посуды."}];
